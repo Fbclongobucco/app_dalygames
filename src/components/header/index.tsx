@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 import { LiaGamepadSolid } from "react-icons/lia"
 
@@ -10,7 +11,7 @@ export function Header() {
                 <nav className="flex justify-center items-center gap-4">
                     <Link href="/" >
                         <Image
-                            src="/assets/logo.svg"
+                            src={`/api/dalygames/assets/logo.svg`}
                             alt="logo"
                             quality={100}
                             priority={true}

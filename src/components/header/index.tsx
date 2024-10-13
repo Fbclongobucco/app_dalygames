@@ -20,7 +20,7 @@ export function Header() {
                         />
                     </Link>
 
-                    <Link href="Games">
+                    <Link href="/">
                         Games
                     </Link>
 

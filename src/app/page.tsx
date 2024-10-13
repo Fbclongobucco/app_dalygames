@@ -64,7 +64,7 @@ export default async function Home() {
 
         <Input />
 
-        <h2 className="">
+        <h2 className="font-bold text-lg mt-7 mb-2">
           jogos para conhecer
         </h2>
 

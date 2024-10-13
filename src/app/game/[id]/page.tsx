@@ -5,6 +5,10 @@ import { redirect } from "next/navigation";
 import { Label } from "./components";
 import { GameCard } from "@/components/gamecard";
 
+
+
+
+
 async function getData(id: string) {
 
     try{

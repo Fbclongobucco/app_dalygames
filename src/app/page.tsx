@@ -6,33 +6,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRightSquare } from "react-icons/bs";
 
-async function getDailyGame() {
-  try {
-    const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game_day`, { next: { revalidate: 320 } })
-    return res.json()
-
-  } catch (error) {
-    throw new Error("Failed to fecth data" + error)
-  }
-
-}
-
-async function getGamesData() {
-  try {
-    const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=games`, { next: { revalidate: 320 } })
-    return res.json()
-
-  } catch (error) {
-    throw new Error("Failed to fecth data" + error)
-  }
-}
 
 export default async function Home() {
 
   const dailyGame: GameProps = await getDailyGame()
   const data: GameProps[] = await getGamesData();
 
-
+  async function getDailyGame() {
+    try {
+      const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game_day`, { next: { revalidate: 320 } })
+      return res.json()
+    } catch (error: any) {
+      throw new Error("Failed to fetch data: " + error.message)
+    }
+  }
+  
+  async function getGamesData() {
+    try {
+      const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=games`, { next: { revalidate: 320 } })
+      return res.json()
+    } catch (error: any) {
+      throw new Error("Failed to fetch data: " + error.message)
+    }
+  }
+  
 
   return (
     <main className="w-full">

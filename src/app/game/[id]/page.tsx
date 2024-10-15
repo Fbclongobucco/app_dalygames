@@ -12,33 +12,31 @@ interface PropsParams{
     }
 }
 
-export async function generateMedata({params}: PropsParams): Promise<Metadata>{
-
-    try{
-        const response: GameProps = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game&id=${params.id}`, {next: {revalidate: 60}})
-        .then((res)=> res.json())
-        .catch(()=>{
-            return {
-                title: "DalyGames - Descubra jogos incriveis pra se divertir."
-            }
-        })
+export async function generateMetadata({ params }: PropsParams): Promise<Metadata> {
+    try {
+        const response: GameProps = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game&id=${params.id}`, { next: { revalidate: 60 } })
+            .then((res) => res.json())
+            .catch(() => {
+                return {
+                    title: "DalyGames - Descubra jogos incríveis para se divertir."
+                }
+            });
 
         return {
             title: response.title,
-            description: `${response.description.slice(0,100)}...`,
+            description: `${response.description.slice(0, 100)}...`,
             openGraph: {
                 title: response.title,
                 images: response.image_url
             }
-        }
-      
-    } catch(err){
+        };
+    } catch (err) {
         return {
-            title: "DalyGames - Descubra jogos incriveis pra se divertir."
-        }
+            title: "DalyGames - Descubra jogos incríveis para se divertir."
+        };
     }
-    
 }
+
 
 
 async function getData(id: string) {
